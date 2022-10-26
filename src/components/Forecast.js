@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import ForecastDisplay from "./ForecastDisplay";
 
 const Forecast = ({lat, lng}) => {
     const [forecast, setForecast] = useState({
@@ -11,11 +12,13 @@ const Forecast = ({lat, lng}) => {
     }
     });
 
+    const { result } = forecast;
+    const { sky, temp, wind, swell } = result;
+
     const params = 'airTemperature,cloudCover,gust,swellHeight';
     
     const today = new Date();
     const time = Math.floor(today.getTime() / 1000);
-    console.log(time);
 
     useEffect(() => {
         if (!lat) return
@@ -40,9 +43,60 @@ const Forecast = ({lat, lng}) => {
     
     }, [lat,lng])
 
-    return <div> Cloud cover: {forecast.result.sky} temp: {forecast.result.temp} wind: {forecast.result.wind} swell: {forecast.result.swell}</div>
+    return (
+
+        < ForecastDisplay 
+            sky={Math.floor(sky)}
+            wind={Math.floor(wind)} 
+            swell={Math.floor(swell)} 
+            temp={Math.floor(temp)}
+            when='today' 
+        />
+
+        // <div className="ui centered">
+        //     <div className="content">
+        //         <p className="header justify top left">NOW</p>
+        //         <div className="ui grid container">
+        //             <div className="column four wide centered">
+        //                 {sky < 25 && < WiDaySunny size={100} />}
+        //                 {sky > 25 && sky < 50 && < WiDayCloudy size={100} />}
+        //             </div>
+        //             <div className="column eight wide centered">
+        //                 <div className="ui small inverted statistic">
+        //                     <div className="label">
+        //                         Wind
+        //                     </div>
+        //                     <div className="value">
+        //                         {forecast.result.wind}
+        //                     </div> 
+        //                 </div>
+        //             </div>
+        //             <div className="column eight wide centered">
+        //                 <div className="ui small inverted statistic">
+        //                     <div className="label">Temp</div>
+        //                     <div className="value">
+        //                         {Math.floor(temp)}° 
+        //                     </div>
+        //                 </div>
+        //             </div>
+        //             <div className="column eight wide centered">
+        //                 <div className="card ui small inverted statistic">
+        //                     <div className="label">
+        //                         Swell
+        //                     </div>
+        //                     <div className="value">
+        //                         {forecast.result.swell}
+        //                     </div> 
+        //                 </div>
+        //             </div>
+
+        //         </div>
+        //     </div>
+        //     <div className="next 24hr forecast">
+
+        //     </div>
+        // </div>
+    );
 };
 
 export default Forecast;
-
-// setLocation(prevLocation => ({ ...location, lat: e.target.value }))

@@ -1,0 +1,34 @@
+body {
+    background-color: #007bae;
+    color: white;
+}
+
+.body {
+    margin: 1em;
+}
+
+.ui.header {
+    color: white;
+}
+
+.ui.two.cards>.card, .ui.card, .ui.cards>.card {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.ui.card>.content, .ui.cards>.card>.content {
+    background-color: rgba(255,255,255, 0.2);
+}
+
+.ui.statistic {
+    margin: 1em, 1em;
+}
+
+.span {
+    font: 10;
+}
+
+.hourly_f.ui.segment {
+    background-color: transparent;
+    border: white;
+}

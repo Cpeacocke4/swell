@@ -14,7 +14,20 @@ const App = () => {
     console.log(location);  
     
     return (
-        <Forecast lat={location.lat} lng={location.lng}/>
+        <div className="body">
+            <h1 className="ui huge header">SWELL</h1>
+            <div className="ui two stackable cards">
+                <div className= "card">
+                    <div className="content">
+                        <Forecast lat={location.lat} lng={location.lng}/>
+                    </div>
+                </div>
+                <div className= "card">
+                    <div className="content">
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 };
 
