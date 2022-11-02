@@ -6,7 +6,6 @@ const ForecastDisplay = ({sky, wind, swell, temp, when}) => {
     const today = new Date();
     const time = today.getHours()
 
-    
     return (    
         <div className="ui container">
             <div className="ui basic segment">
@@ -50,7 +49,6 @@ const ForecastDisplay = ({sky, wind, swell, temp, when}) => {
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 

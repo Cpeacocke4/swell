@@ -30,7 +30,7 @@ const Forecast = ({lat, lng}) => {
                     'Authorization' : 'bbec2bc0-4e1f-11ed-bce5-0242ac130002-bbec2c2e-4e1f-11ed-bce5-0242ac130002'
                 },
             });
-            console.log(data.hours);
+            console.log(data);
             setForecast({...forecast, result: {
                 sky: data.hours[0].cloudCover.noaa,
                 temp: data.hours[0].airTemperature.noaa,
@@ -41,10 +41,9 @@ const Forecast = ({lat, lng}) => {
     
         getForecast();
     
-    }, [lat,lng])
+    }, [lat,lng]);
 
     return (
-
         < ForecastDisplay 
             sky={Math.floor(sky)}
             wind={Math.floor(wind)} 
@@ -52,50 +51,6 @@ const Forecast = ({lat, lng}) => {
             temp={Math.floor(temp)}
             when='today' 
         />
-
-        // <div className="ui centered">
-        //     <div className="content">
-        //         <p className="header justify top left">NOW</p>
-        //         <div className="ui grid container">
-        //             <div className="column four wide centered">
-        //                 {sky < 25 && < WiDaySunny size={100} />}
-        //                 {sky > 25 && sky < 50 && < WiDayCloudy size={100} />}
-        //             </div>
-        //             <div className="column eight wide centered">
-        //                 <div className="ui small inverted statistic">
-        //                     <div className="label">
-        //                         Wind
-        //                     </div>
-        //                     <div className="value">
-        //                         {forecast.result.wind}
-        //                     </div> 
-        //                 </div>
-        //             </div>
-        //             <div className="column eight wide centered">
-        //                 <div className="ui small inverted statistic">
-        //                     <div className="label">Temp</div>
-        //                     <div className="value">
-        //                         {Math.floor(temp)}° 
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //             <div className="column eight wide centered">
-        //                 <div className="card ui small inverted statistic">
-        //                     <div className="label">
-        //                         Swell
-        //                     </div>
-        //                     <div className="value">
-        //                         {forecast.result.swell}
-        //                     </div> 
-        //                 </div>
-        //             </div>
-
-        //         </div>
-        //     </div>
-        //     <div className="next 24hr forecast">
-
-        //     </div>
-        // </div>
     );
 };
 

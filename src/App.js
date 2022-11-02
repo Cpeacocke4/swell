@@ -11,7 +11,8 @@ const App = () => {
     
     }, []);
 
-    console.log(location);  
+    console.log(location);
+    const {lat, lng} = location;  
     
     return (
         <div className="body">
@@ -19,7 +20,7 @@ const App = () => {
             <div className="ui two stackable cards">
                 <div className= "card">
                     <div className="content">
-                        <Forecast lat={location.lat} lng={location.lng}/>
+                        <Forecast lat={lat} lng={lng}/>
                     </div>
                 </div>
                 <div className= "card">

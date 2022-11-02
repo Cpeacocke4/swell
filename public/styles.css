@@ -28,7 +28,11 @@ body {
     font: 10;
 }
 
-.hourly_f.ui.segment {
+.hourly_f.ui.segment, .ui.horizontal.segments, .ui.segment {
     background-color: transparent;
     border: white;
+}
+
+.hourly_display > segments {
+    width: 30em;
 }
