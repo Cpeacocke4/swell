@@ -1,12 +1,13 @@
 import React from "react";
-import { WiDaySunny, WiDayCloudy } from "react-icons/wi";
+import { WiDaySunny, WiDayCloudy, WiCloudy } from "react-icons/wi";
 
-const HourForecast = ({sky, wind, swell, temp, when}) => { 
+const HourForecast = ({sky, wind, swell, temp}) => { 
     return (
         <div className="ui segment" > 
             <div className="ui center aligned">
-                {sky < 25 && < WiDaySunny size={30} />}
-                {sky > 25 && sky < 50 && < WiDayCloudy size={30} />}
+                {sky < 30 && < WiDaySunny size={30} />}
+                {sky > 30 && sky < 60 && < WiDayCloudy size={30} />}
+                {sky > 60 && < WiCloudy size={30}/>}
             </div>
             <div className="ui divider"></div>
             <div className= "ui center aligned">

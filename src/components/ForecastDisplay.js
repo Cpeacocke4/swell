@@ -2,7 +2,7 @@ import React from "react";
 import HourlyDisplay from "./HourlyDisplay";
 import { WiDaySunny, WiDayCloudy } from "react-icons/wi";
 
-const ForecastDisplay = ({sky, wind, swell, temp, when}) => {
+const ForecastDisplay = ({sky, wind, swell, temp, when, hour_results}) => {
     const today = new Date();
     const time = today.getHours()
 
@@ -54,10 +54,7 @@ const ForecastDisplay = ({sky, wind, swell, temp, when}) => {
 
             < HourlyDisplay 
                 time={time}
-                sky={Math.floor(sky)}
-                wind={Math.floor(wind)} 
-                swell={Math.floor(swell)} 
-                temp={Math.floor(temp)} 
+                hour_results={hour_results}
             />
         </div>
     );

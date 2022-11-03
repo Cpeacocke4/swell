@@ -12,8 +12,26 @@ const Forecast = ({lat, lng}) => {
     }
     });
 
+    const [hourlyForecast, setHourlyForecast] = useState({
+        hour_results: {
+            one: [],
+            two: [],
+            three: [],
+            four: [],
+            five: [],
+            six: [],
+            seven: [],
+            eight: [],
+            ninth: [],
+            ten: [],
+            eleven: [],
+            twelve: [],
+        }
+    });
+
     const { result } = forecast;
     const { sky, temp, wind, swell } = result;
+    const { hour_results } = hourlyForecast;
 
     const params = 'airTemperature,cloudCover,gust,swellHeight';
     
@@ -37,6 +55,20 @@ const Forecast = ({lat, lng}) => {
                 wind: data.hours[0].gust.noaa,
                 swell: data.hours[0].swellHeight.noaa,
             }});
+            setHourlyForecast({...hourlyForecast, hour_results: {
+                one: data.hours[1],
+                two: data.hours[2],
+                three: data.hours[3],
+                four: data.hours[4],
+                five: data.hours[5],
+                six: data.hours[6],
+                seven: data.hours[7],
+                eight: data.hours[8],
+                ninth: data.hours[9],
+                ten: data.hours[10],
+                eleven: data.hours[11],
+                twelve: data.hours[12],
+            }});
         };
     
         getForecast();
@@ -47,9 +79,10 @@ const Forecast = ({lat, lng}) => {
         < ForecastDisplay 
             sky={Math.floor(sky)}
             wind={Math.floor(wind)} 
-            swell={Math.floor(swell)} 
+            swell={swell} 
             temp={Math.floor(temp)}
-            when='today' 
+            when='today'
+            hour_results={hour_results}
         />
     );
 };
